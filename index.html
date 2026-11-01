@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>CBB Picks</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e3e2dc;
+    --win: #1f7a4d; --loss: #b3402f; --accent: #2b5cab; --pick-bg: #eef3fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c;
+      --win: #4cbb83; --loss: #e07a68; --accent: #7aa6f0; --pick-bg: #1f2a3d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c;
+    --win: #4cbb83; --loss: #e07a68; --accent: #7aa6f0; --pick-bg: #1f2a3d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 24px; margin: 0; }
+  h2 { font-size: 17px; margin: 32px 0 4px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .card .k { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .card .v { font-size: 22px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .list { display: grid; gap: 8px; margin-top: 10px; }
+  .pk { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+        display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: baseline; }
+  .pk .m { font-weight: 500; }
+  .pk .p { font-size: 18px; font-weight: 650; color: var(--accent); }
+  .pk .r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; border-radius: 6px; padding: 1px 6px; margin-left: 6px;
+         vertical-align: 2px; background: var(--pick-bg); color: var(--accent); }
+  .tag.dbl { background: var(--accent); color: var(--bg); }
+  .tag.late { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+  .win { color: var(--win); font-weight: 650; } .loss { color: var(--loss); font-weight: 650; }
+  .push { color: var(--muted); font-weight: 650; }
+  .empty { padding: 18px; text-align: center; color: var(--muted); background: var(--card);
+           border: 1px dashed var(--line); border-radius: 10px; }
+  details { margin-top: 36px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0; }
+  .day { margin: 18px 0 0; font-size: 13px; color: var(--muted); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>College Basketball Picks</h1>
+  <div class="muted small" id="meta">Loading…</div>
+  <div class="cards" id="cards"></div>
+
+  <h2 id="today-h">Today</h2>
+  <div class="list" id="today"></div>
+
+  <section id="tomorrow-s" hidden>
+    <h2>Tomorrow</h2>
+    <div class="muted small">Posted the evening before, as soon as lines open. Grab these early.</div>
+    <div class="list" id="tomorrow"></div>
+  </section>
+
+  <h2>Results</h2>
+  <div id="results"></div>
+
+  <details>
+    <summary>How to read this</summary>
+    <p><b>The pick</b> is the side and the line it was made at. If your book has a worse number, the edge is smaller.</p>
+    <p><b>Model</b> is the model's own projected margin or total; <b>edge</b> is how far that is from the line, in points. Totals need 3+ points of edge (5+ in the season's first two weeks); spreads need 4+ and only run in November–December.</p>
+    <p><b>2× ref crew</b>: the officials posted before tip and historically lean the same way, so the model would bet it again.</p>
+    <p><b>Late</b>: the line first showed up on game day, after the best value is usually gone.</p>
+    <p><b>Units</b> assume 1 unit risked per pick at −110.</p>
+    <p class="muted">For fun. A model, not a guarantee. Bet only what you can afford to lose.</p>
+  </details>
+</main>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const tip = s => s ? new Date(s).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "";
+const matchup = p => `${esc(p.away)} ${p.neutral ? "vs" : "@"} ${esc(p.home)}`;
+const rec = x => `${x.w}-${x.l}${x.p ? "-" + x.p : ""}`;
+const u = x => `${x > 0 ? "+" : ""}${x.toFixed(1)}u`;
+
+function pickCard(p, graded) {
+  const tags = (p.double ? `<span class="tag dbl">2× ref crew</span>` : "") + (p.late ? `<span class="tag late">late</span>` : "");
+  const right = graded
+    ? `<span class="${p.result}">${p.result.toUpperCase()}</span>`
+    : `<span class="muted small">edge ${p.edge}</span>`;
+  const sub = graded ? `Final ${esc(p.final)}` : `${tip(p.start)} · model: ${esc(p.model)}${p.best && p.best !== p.pick.split(" ").pop() ? ` · best line ${esc(p.best)}` : ""}`;
+  return `<div class="pk">
+    <div class="m">${matchup(p)}</div><div class="r">${right}</div>
+    <div class="p">${esc(p.pick)}${tags}</div><div class="r muted small">${p.market}</div>
+    <div class="muted small" style="grid-column: 1 / -1">${sub}</div>
+  </div>`;
+}
+
+function list(el, rows, emptyText) {
+  rows = rows.slice().sort((a, b) => new Date(a.start) - new Date(b.start));
+  el.innerHTML = rows.length ? rows.map(p => pickCard(p, false)).join("") : `<div class="empty">${emptyText}</div>`;
+}
+
+fetch("picks.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+  document.getElementById("meta").textContent = `Updated ${d.updated}`;
+  const s = d.record.spread, t = d.record.total;
+  const all = { w: s.w + t.w, l: s.l + t.l, p: s.p + t.p, units: s.units + t.units };
+  const card = (k, x) => `<div class="card"><div class="k">${k}</div><div class="v">${rec(x)}</div><div class="muted small">${x.w + x.l ? u(x.units) : "no results yet"}</div></div>`;
+  document.getElementById("cards").innerHTML = card("Overall", all) + card("Spreads", s) + card("Totals", t);
+
+  const day = new Date(d.day + "T12:00:00").toLocaleDateString([], { weekday: "long", month: "short", day: "numeric" });
+  document.getElementById("today-h").textContent = `Today · ${day}`;
+  list(document.getElementById("today"), d.today.filter(p => !p.result), "No picks today.");
+  document.getElementById("tomorrow-s").hidden = !d.tomorrow.length;
+  list(document.getElementById("tomorrow"), d.tomorrow, "");
+
+  const res = document.getElementById("results");
+  if (!d.results.length) { res.innerHTML = `<div class="empty">No graded picks yet.</div>`; return; }
+  const byDay = {};
+  d.results.forEach(p => (byDay[p.day] = byDay[p.day] || []).push(p));
+  res.innerHTML = Object.keys(byDay).sort().reverse().map(k => {
+    const ps = byDay[k], w = ps.filter(p => p.result === "win").length, l = ps.filter(p => p.result === "loss").length;
+    const label = new Date(`${k.slice(0, 4)}-${k.slice(4, 6)}-${k.slice(6)}T12:00:00`).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+    return `<div class="day">${label} · ${w}-${l}</div><div class="list">${ps.map(p => pickCard(p, true)).join("")}</div>`;
+  }).join("");
+}).catch(() => { document.getElementById("meta").textContent = "No picks posted yet."; });
+</script>
+</body>
+</html>
