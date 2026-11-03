@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>How the Picks Work</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e3e2dc; --accent: #2b5cab;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c; --accent: #7aa6f0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c; --accent: #7aa6f0;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 700px; margin: 0 auto; padding: 24px 16px 64px; }
+  a { color: var(--accent); }
+  h1 { font-size: 26px; margin: 8px 0 4px; line-height: 1.25; }
+  h2 { font-size: 19px; margin: 36px 0 8px; }
+  p, li { margin: 8px 0; }
+  ul { padding-left: 20px; }
+  .muted { color: var(--muted); }
+  .wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-size: 12px; font-weight: 600; }
+  td.l, th.l { text-align: left; }
+  tr:last-child td { border-bottom: 0; }
+  .note { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+          border-radius: 8px; padding: 10px 14px; margin: 16px 0; }
+</style>
+</head>
+<body>
+<main>
+  <a href="./">← Back to picks</a>
+  <h1>How the picks work</h1>
+  <p class="muted">A plain-English overview of the model, how it was tested, and the rules behind each pick.</p>
+
+  <h2>The short version</h2>
+  <p>A computer model projects the final margin and total points of every Division I men's basketball game. When its projection is far enough from the betting line, that's a pick. The model was tested on nine seasons of games it had never seen, and the rules were chosen from that testing, not from hunches.</p>
+  <p>The edge is small and real only under specific conditions, mainly <b>betting early, when lines first open</b>. Expect long losing stretches even if everything works as designed.</p>
+
+  <h2>What the model looks at</h2>
+  <ul>
+    <li><b>Team strength:</b> tempo-free efficiency ratings, meaning points scored and allowed per 100 possessions, adjusted for opponent strength. Taken only as they stood the day before each game, so the model never peeks at the future.</li>
+    <li><b>How teams play:</b> the "four factors" (shooting, turnovers, offensive rebounding, free throws), three-point volume, and pace, from box scores, both season-long and recent form.</li>
+    <li><b>The matchup:</b> how one team's offense lines up against the other's defense, and how fast the game is likely to be.</li>
+    <li><b>Situation:</b> home court or neutral site, rest days, conference vs. non-conference, and time of season.</li>
+  </ul>
+  <p>These go into a gradient-boosted tree model, a standard machine-learning method that learns from nearly 50,000 past games. One model projects the margin (used for spreads) and another projects the total (used for over/unders).</p>
+  <p>The model never sees the betting line. It forms its own opinion, which is then compared to the market.</p>
+
+  <h2>How it was tested</h2>
+  <p>Every result below is <b>out of sample</b>. To test the 2024 season, the model was trained only on seasons before 2024, then asked to predict 2024 cold. This walk-forward process was repeated for each season from 2018 through 2026, so no test season ever leaked into training.</p>
+  <p>Picks were graded against three versions of the line:</p>
+  <ul>
+    <li><b>Opening line:</b> the first number posted.</li>
+    <li><b>Evening line:</b> the night before the game, when these picks are actually posted.</li>
+    <li><b>Closing line:</b> right before tip-off, the sharpest number.</li>
+  </ul>
+
+  <div class="wrap"><table>
+    <thead><tr><th class="l">Backtest</th><th>Spreads</th><th>Totals</th></tr></thead>
+    <tbody>
+      <tr><td class="l">Evening line, 2021–26</td><td>53.3%</td><td>53.8%</td></tr>
+      <tr><td class="l">Opening line, 2024–26</td><td>57.6%</td><td>55.0%</td></tr>
+      <tr><td class="l">Closing line, 2024–26</td><td>54.2%</td><td>49.8%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Win rate on picks, ties excluded. At standard −110 odds you need 52.4% to break even.</p>
+  <p>The pattern is the whole story. Against early lines the model wins often enough to profit. By tip-off, the market has mostly caught up, and the totals edge is gone. That's why picks are posted the evening before, and why grabbing them early matters.</p>
+
+  <h2>The rules for a pick</h2>
+  <ul>
+    <li><b>Totals:</b> the model's projected total must differ from the line by at least 3 points. In the first two weeks of the season, when team ratings are least reliable, it must differ by at least 5.</li>
+    <li><b>Spreads:</b> the model's projected margin must differ from the line by at least 4 points, and only in November and December. After that the market prices teams well enough that spread picks stopped working in testing.</li>
+    <li><b>No moneyline picks.</b> The model's win probabilities were not better than the market's.</li>
+    <li><b>"Late" picks:</b> games whose lines only appeared on game day. They're shown, but testing says most of the value is gone by then.</li>
+  </ul>
+  <p>The model takes both sides. Over the test seasons it picked overs and unders in roughly equal numbers against opening lines, and the mix shifts from season to season.</p>
+
+  <h2>Referee crews (the "2× ref crew" tag)</h2>
+  <p>Officials are announced shortly before tip. Some referees consistently call games that land over or under the total, through more fouls and free throws or fewer. Each official's history is measured against the closing total and heavily discounted toward average when there's little history to go on.</p>
+  <p>When the assigned crew leans clearly the same way as a total pick already posted, the pick gets the tag. In testing, those picks won about 58% of the time.</p>
+
+  <h2>What was tested and thrown out</h2>
+  <p>A lot of popular betting angles were checked the same way and failed, so they aren't used. 278 situations were tested in all, each defined in advance. Each had to win in the 2018–23 seasons, survive a statistical correction for testing so many ideas at once, and then win again in 2024–26.</p>
+  <ul>
+    <li>Blind systems like home underdogs, big road favorites, conference-game unders, letdown spots after big wins, revenge games, rest advantages and betting on or against hot streaks. All landed near 50%.</li>
+    <li>Filtering picks by home/away, conference, conference strength, spread size or day of week. None made a reliable difference.</li>
+    <li>"Team X always covers": a team's record against the spread one season says nothing about the next.</li>
+    <li>Following or fading a single sharp sportsbook, adding roster-continuity data, and requiring bigger edges on spreads early in the season.</li>
+  </ul>
+  <div class="note">With hundreds of ideas, about 1 in 20 will look like a winner by pure luck. Most "systems" you see online are that luck. The bar here is that an idea has to keep working on seasons it was never fitted to.</div>
+
+  <h2>Honest caveats</h2>
+  <ul>
+    <li>A 54–55% win rate means losing about 45% of the time. Losing weeks are normal. Judge it over hundreds of picks, not dozens.</li>
+    <li>Past results don't guarantee future ones. Markets adapt, and the edge could shrink.</li>
+    <li>If your sportsbook's line is worse than the posted line, the edge is smaller. The posted number is the one to beat.</li>
+    <li>This is a hobby project shared for fun. Bet only what you can afford to lose.</li>
+  </ul>
+</main>
+</body>
+</html>
