@@ -71,12 +71,13 @@
   <div class="wrap"><table>
     <thead><tr><th class="l">Backtest</th><th>Spreads</th><th>Totals</th></tr></thead>
     <tbody>
-      <tr><td class="l">Evening line, 2021–26</td><td>53.3%</td><td>53.8%</td></tr>
-      <tr><td class="l">Opening line, 2024–26</td><td>57.6%</td><td>55.0%</td></tr>
-      <tr><td class="l">Closing line, 2024–26</td><td>54.2%</td><td>49.8%</td></tr>
+      <tr><td class="l">Evening line, 2021–26</td><td>55.3%</td><td>53.5%</td></tr>
+      <tr><td class="l">Opening line, 2024–26</td><td>60.4%</td><td>54.1%</td></tr>
+      <tr><td class="l">Closing line, 2024–26</td><td>55.1%</td><td>50.2%</td></tr>
     </tbody>
   </table></div>
   <p class="muted">Win rate on picks, ties excluded. At standard −110 odds you need 52.4% to break even.</p>
+  <p>Each game in the test is rebuilt with only the data the evening run would really have had: results through two days before the game, since the night-before games aren't final yet at posting time. Checking it this way barely moved the numbers.</p>
   <p>The pattern is the whole story. Against early lines the model wins often enough to profit. By tip-off, the market has mostly caught up, and the totals edge is gone. That's why picks are posted the evening before, and why grabbing them early matters.</p>
 
   <h2>The rules for a pick</h2>
@@ -86,7 +87,7 @@
     <li><b>No moneyline picks.</b> The model's win probabilities were not better than the market's.</li>
     <li><b>"Late" picks:</b> games whose lines only appeared on game day. They're shown, but testing says most of the value is gone by then.</li>
   </ul>
-  <p>The model takes both sides. Over the test seasons it picked overs and unders in roughly equal numbers against opening lines, and the mix shifts from season to season.</p>
+  <p>The model takes both sides, and both sides made money in testing: overs and unders each won about 53.5% against the evening line. Betting every over or every under without the model loses, about 50% before the bookmaker's cut. The mix of overs and unders shifts from season to season.</p>
 
   <h2>Referee crews (the "2× ref crew" tag)</h2>
   <p>Officials are announced shortly before tip. Some referees consistently call games that land over or under the total, through more fouls and free throws or fewer. Each official's history is measured against the closing total and heavily discounted toward average when there's little history to go on.</p>
