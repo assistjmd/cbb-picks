@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>Picks FAQ</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e3e2dc; --accent: #2b5cab;
+    --good: #2f7d4f; --bad: #b2433a; --chip: #efeee9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c; --accent: #7aa6f0;
+      --good: #6cc38f; --bad: #e57f75; --chip: #2a2a27;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --card: #1d1d1b; --ink: #ecebe6; --muted: #9b9a93; --line: #2f2f2c; --accent: #7aa6f0;
+    --good: #6cc38f; --bad: #e57f75; --chip: #2a2a27;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  a { color: var(--accent); }
+  h1 { font-size: 26px; margin: 8px 0 4px; line-height: 1.25; }
+  h2 { font-size: 19px; margin: 36px 0 8px; }
+  p, li { margin: 8px 0; }
+  ul { padding-left: 20px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  .wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-size: 12px; font-weight: 600; }
+  td.l, th.l { text-align: left; }
+  tr:last-child td { border-bottom: 0; }
+  th.grp { text-align: center; border-left: 1px solid var(--line); }
+  td.sep, th.sep { border-left: 1px solid var(--line); }
+  .pos { color: var(--good); } .neg { color: var(--bad); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 999px;
+         background: var(--accent); color: var(--bg); margin-left: 6px; vertical-align: 1px; }
+  .chips { white-space: normal; text-align: left; font-size: 12px; }
+  .chip { display: inline-block; background: var(--chip); border-radius: 4px; padding: 0 5px; margin: 1px 2px 1px 0; }
+  .note { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+          border-radius: 8px; padding: 10px 14px; margin: 16px 0; }
+  details { margin: 8px 0; } summary { cursor: pointer; color: var(--accent); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 12px 0; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .tile .k { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .tile .v { font-size: 22px; font-weight: 650; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+  <a href="./">← Back to picks</a> · <a href="methodology.html">How the picks work</a>
+  <h1>FAQ: how the picks perform</h1>
+  <p class="muted">Every number here is either from the out-of-sample backtest (seasons the model never trained on, using only data available at posting time) or from this season's real posted picks. Win rates exclude pushes; units assume 1 unit per pick at −110, where 52.4% breaks even.</p>
+
+  <h2>How is the model doing this season?</h2>
+  <div class="tiles" id="live-tiles"><div class="tile muted">Loading…</div></div>
+  <p class="muted small" id="live-note"></p>
+
+  <h2>What are the best-performing strategies?</h2>
+  <p>We tested variants of the pick rules against three versions of the betting line. These are the top five by return on investment in the backtest. <span class="tag">LIVE</span> marks the rules the posted picks actually follow.</p>
+  <div class="wrap"><table id="strat-top"></table></div>
+  <details><summary>Show all tested variants</summary><div class="wrap"><table id="strat-all"></table></div></details>
+  <div class="note">
+    <b>Read this table carefully.</b> The top rows are mostly against the <i>opening</i> line, the first number a sportsbook posts. Those lines move fast and often carry low limits, so most bettors can't get them. Picks here are posted the evening before the game, so the <i>evening</i> line rows are the honest measure of what you could have bet. The <i>closing</i> rows show the edge mostly disappears by tip-off, except on the biggest early-season spread edges.
+    Picking the best five out of many variants also flatters them a little; the per-season results show which ones held up every year.
+  </div>
+
+  <h2>How often does it pick underdogs, and how do those do?</h2>
+  <p>Spread picks only. "Share" is the percent of all spread picks in that group.</p>
+  <div class="wrap"><table id="b-spread_role"></table></div>
+
+  <h2>How often does it take spreads bigger than 20? Do big spreads work?</h2>
+  <p>Grouped by the size of the line on the team picked, underdog or favorite. Lopsided November games (power-conference teams hosting small schools) produce a lot of 20+ point lines.</p>
+  <div class="wrap"><table id="b-spread_size"></table></div>
+
+  <h2>Home, away or neutral site?</h2>
+  <p>Which side of the spread the pick is on.</p>
+  <div class="wrap"><table id="b-spread_venue"></table></div>
+
+  <h2>Does a bigger edge mean a better pick?</h2>
+  <p>"Edge" is how far the model's number is from the line, in points.</p>
+  <h3 class="small muted">Spreads</h3>
+  <div class="wrap"><table id="b-spread_edge"></table></div>
+  <h3 class="small muted">Totals</h3>
+  <div class="wrap"><table id="b-total_edge"></table></div>
+
+  <h2>Overs or unders?</h2>
+  <div class="wrap"><table id="b-total_side"></table></div>
+
+  <h2>High totals or low totals?</h2>
+  <p>Grouped by the posted total.</p>
+  <div class="wrap"><table id="b-total_size"></table></div>
+
+  <h2>Why are there no moneyline picks?</h2>
+  <p>The model's win probabilities were tested against the market's and weren't better, so moneylines lose to the bookmaker's cut. The model's projected margin is still shown for every game.</p>
+
+  <h2>How much should I read into one row?</h2>
+  <p>Not much, unless the sample is big. With 100 picks, a true 53% picker lands anywhere from about 43% to 63% just by luck. The "±" column shows that luck range (95%) for each row. This season's rows are especially small, so treat them as a check that nothing is broken, not as proof.</p>
+
+  <p class="muted small" id="foot"></p>
+</main>
+<script>
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = v => v == null ? "–" : v.toFixed(1) + "%";
+const sgn = (v, suf = "") => v == null ? "–" : `<span class="${v > 0 ? "pos" : v < 0 ? "neg" : ""}">${v > 0 ? "+" : ""}${v.toFixed(1)}${suf}</span>`;
+const ci = r => { const n = r.w + r.l; return n ? "±" + (196 * Math.sqrt(0.25 / n)).toFixed(0) : "–"; };
+const LINE = { evening: "Evening", opening: "Opening", closing: "Closing" };
+
+function stratTable(el, rows) {
+  el.innerHTML = `<tr><th class="l">Strategy</th><th class="l">Line</th><th>Picks</th><th>Win%</th><th>Units</th><th>ROI</th>
+    <th class="l">Units by season</th></tr>` + rows.map(s => `<tr>
+    <td class="l">${esc(s.name)}${s.live ? '<span class="tag">LIVE</span>' : ""}</td>
+    <td class="l">${LINE[s.line]} <span class="muted small">${esc(s.seasons)}</span></td>
+    <td>${(s.w + s.l).toLocaleString()}</td><td>${pct(s.pct)}</td><td>${sgn(s.units)}</td><td>${sgn(s.roi, "%")}</td>
+    <td class="chips">${Object.entries(s.by_season).map(([k, v]) =>
+      `<span class="chip"><span class="muted">'${String(k).slice(2)}</span> ${sgn(v)}</span>`).join("")}</td></tr>`).join("");
+}
+
+function cells(r) {
+  if (!r) return `<td class="sep">–</td><td>–</td><td>–</td><td>–</td>`;
+  return `<td class="sep">${r.share == null ? "–" : r.share.toFixed(0) + "%"}</td><td>${r.w}-${r.l}${r.p ? "-" + r.p : ""}</td>
+          <td>${pct(r.pct)} <span class="muted small">${ci(r)}</span></td><td>${sgn(r.units)}</td>`;
+}
+
+function breakdownTable(el, bt, live) {
+  const groups = bt.map(r => r.group);
+  const lv = Object.fromEntries((live || []).map(r => [r.group, r]));
+  el.innerHTML = `<tr><th class="l"></th><th class="grp" colspan="4">Backtest, evening line 2021–26</th>
+      <th class="grp" colspan="4">This season, posted picks</th></tr>
+    <tr><th class="l">Group</th><th class="sep">Share</th><th>W-L</th><th>Win%</th><th>Units</th>
+      <th class="sep">Share</th><th>W-L</th><th>Win%</th><th>Units</th></tr>` +
+    groups.map((g, i) => `<tr><td class="l">${esc(g)}</td>${cells(bt[i])}${cells(lv[g])}</tr>`).join("");
+}
+
+function tile(k, r) {
+  return `<div class="tile"><div class="k">${k}</div><div class="v">${r.w}-${r.l}${r.p ? "-" + r.p : ""}</div>
+    <div class="small">${pct(r.pct)} · ${sgn(r.units, "u")}</div></div>`;
+}
+
+Promise.all([
+  fetch("faq_backtest.json", { cache: "no-store" }).then(r => r.json()),
+  fetch("picks.json", { cache: "no-store" }).then(r => r.json()).catch(() => ({})),
+]).then(([bt, pk]) => {
+  const top = bt.strategies.slice(0, 5);
+  stratTable(document.getElementById("strat-top"), top);
+  stratTable(document.getElementById("strat-all"), bt.strategies);
+  const live = pk.faq || {};
+  for (const k of ["spread_role", "spread_size", "spread_venue", "spread_edge", "total_edge", "total_side", "total_size"])
+    breakdownTable(document.getElementById("b-" + k), bt.breakdown[k], live[k]);
+  if (live.spread_all) {
+    document.getElementById("live-tiles").innerHTML = tile("Spread picks", live.spread_all) + tile("Total picks", live.total_all);
+    document.getElementById("live-note").textContent =
+      "Every pick frozen at posting time and graded against the posted line. Spread picks only run in November and December.";
+  } else {
+    document.getElementById("live-tiles").innerHTML = '<div class="tile muted">No graded picks yet this season.</div>';
+  }
+  document.getElementById("foot").textContent = pk.updated ? `Season numbers updated ${pk.updated}.` : "";
+}).catch(() => { document.getElementById("live-tiles").innerHTML = '<div class="tile muted">Couldn’t load the numbers.</div>'; });
+</script>
+</body>
+</html>

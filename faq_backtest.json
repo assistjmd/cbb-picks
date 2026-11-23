@@ -1,0 +1,607 @@
+{
+ "note": "Bet-time walk-forward predictions, graded at -110, ties excluded from win%.",
+ "strategies": [
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 7",
+   "line": "opening",
+   "seasons": "2024\u201326",
+   "live": false,
+   "w": 99,
+   "l": 47,
+   "p": 0,
+   "pct": 67.8,
+   "units": 43.0,
+   "roi": 29.5,
+   "by_season": {
+    "2024": 5.4,
+    "2025": 25.4,
+    "2026": 12.3
+   },
+   "losing_seasons": 0,
+   "n_seasons": 3
+  },
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 7",
+   "line": "closing",
+   "seasons": "2018\u201326",
+   "live": false,
+   "w": 403,
+   "l": 238,
+   "p": 5,
+   "pct": 62.9,
+   "units": 128.4,
+   "roi": 19.9,
+   "by_season": {
+    "2018": 43.5,
+    "2019": 36.6,
+    "2020": 10.5,
+    "2021": 7.7,
+    "2022": 16.7,
+    "2023": 4.2,
+    "2024": 3.2,
+    "2025": 4.9,
+    "2026": 1.0
+   },
+   "losing_seasons": 0,
+   "n_seasons": 9
+  },
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 4",
+   "line": "opening",
+   "seasons": "2024\u201326",
+   "live": false,
+   "w": 510,
+   "l": 333,
+   "p": 2,
+   "pct": 60.5,
+   "units": 130.6,
+   "roi": 15.5,
+   "by_season": {
+    "2024": 29.1,
+    "2025": 65.8,
+    "2026": 35.7
+   },
+   "losing_seasons": 0,
+   "n_seasons": 3
+  },
+  {
+   "name": "Spreads all season, edge > 4",
+   "line": "opening",
+   "seasons": "2024\u201326",
+   "live": false,
+   "w": 761,
+   "l": 513,
+   "p": 3,
+   "pct": 59.7,
+   "units": 178.8,
+   "roi": 14.0,
+   "by_season": {
+    "2024": 39.7,
+    "2025": 89.0,
+    "2026": 50.1
+   },
+   "losing_seasons": 0,
+   "n_seasons": 3
+  },
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 7",
+   "line": "evening",
+   "seasons": "2021\u201326",
+   "live": false,
+   "w": 98,
+   "l": 75,
+   "p": 3,
+   "pct": 56.6,
+   "units": 14.1,
+   "roi": 8.0,
+   "by_season": {
+    "2021": 1.9,
+    "2022": 10.1,
+    "2023": -2.1,
+    "2024": 2.9,
+    "2025": 5.2,
+    "2026": -3.9
+   },
+   "losing_seasons": 2,
+   "n_seasons": 6
+  },
+  {
+   "name": "Totals, edge > 5",
+   "line": "opening",
+   "seasons": "2024\u201326",
+   "live": false,
+   "w": 1047,
+   "l": 830,
+   "p": 6,
+   "pct": 55.8,
+   "units": 121.8,
+   "roi": 6.5,
+   "by_season": {
+    "2024": 25.9,
+    "2025": 22.2,
+    "2026": 73.7
+   },
+   "losing_seasons": 0,
+   "n_seasons": 3
+  },
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 4",
+   "line": "evening",
+   "seasons": "2021\u201326",
+   "live": true,
+   "w": 726,
+   "l": 587,
+   "p": 19,
+   "pct": 55.3,
+   "units": 73.0,
+   "roi": 5.5,
+   "by_season": {
+    "2021": -10.5,
+    "2022": 7.2,
+    "2023": 11.4,
+    "2024": 17.1,
+    "2025": 31.5,
+    "2026": 16.4
+   },
+   "losing_seasons": 1,
+   "n_seasons": 6
+  },
+  {
+   "name": "Spreads Nov\u2013Dec, edge > 4",
+   "line": "closing",
+   "seasons": "2018\u201326",
+   "live": false,
+   "w": 1664,
+   "l": 1354,
+   "p": 24,
+   "pct": 55.1,
+   "units": 158.7,
+   "roi": 5.2,
+   "by_season": {
+    "2018": 47.7,
+    "2019": 21.2,
+    "2020": 28.0,
+    "2021": -12.1,
+    "2022": 17.5,
+    "2023": 11.9,
+    "2024": 14.8,
+    "2025": 27.3,
+    "2026": 2.4
+   },
+   "losing_seasons": 1,
+   "n_seasons": 9
+  },
+  {
+   "name": "Totals, edge > 5",
+   "line": "evening",
+   "seasons": "2021\u201326",
+   "live": false,
+   "w": 1415,
+   "l": 1163,
+   "p": 22,
+   "pct": 54.9,
+   "units": 123.4,
+   "roi": 4.7,
+   "by_season": {
+    "2021": 26.5,
+    "2022": 16.3,
+    "2023": 0.7,
+    "2024": 36.1,
+    "2025": 6.7,
+    "2026": 37.0
+   },
+   "losing_seasons": 0,
+   "n_seasons": 6
+  },
+  {
+   "name": "Spreads all season, edge > 4",
+   "line": "closing",
+   "seasons": "2018\u201326",
+   "live": false,
+   "w": 2758,
+   "l": 2271,
+   "p": 52,
+   "pct": 54.8,
+   "units": 236.3,
+   "roi": 4.7,
+   "by_season": {
+    "2018": 49.5,
+    "2019": 42.2,
+    "2020": 33.9,
+    "2021": -26.2,
+    "2022": 18.5,
+    "2023": 19.7,
+    "2024": 31.8,
+    "2025": 48.0,
+    "2026": 18.8
+   },
+   "losing_seasons": 1,
+   "n_seasons": 9
+  },
+  {
+   "name": "Totals, edge > 3 (> 5 first two weeks)",
+   "line": "opening",
+   "seasons": "2024\u201326",
+   "live": false,
+   "w": 2646,
+   "l": 2242,
+   "p": 16,
+   "pct": 54.1,
+   "units": 163.5,
+   "roi": 3.3,
+   "by_season": {
+    "2024": 42.6,
+    "2025": 18.5,
+    "2026": 102.3
+   },
+   "losing_seasons": 0,
+   "n_seasons": 3
+  },
+  {
+   "name": "Spreads all season, edge > 4",
+   "line": "evening",
+   "seasons": "2021\u201326",
+   "live": false,
+   "w": 1162,
+   "l": 994,
+   "p": 31,
+   "pct": 53.9,
+   "units": 62.4,
+   "roi": 2.9,
+   "by_season": {
+    "2021": -22.7,
+    "2022": 2.4,
+    "2023": -2.8,
+    "2024": 31.9,
+    "2025": 33.6,
+    "2026": 20.0
+   },
+   "losing_seasons": 2,
+   "n_seasons": 6
+  },
+  {
+   "name": "Totals, edge > 3 (> 5 first two weeks)",
+   "line": "evening",
+   "seasons": "2021\u201326",
+   "live": true,
+   "w": 3922,
+   "l": 3401,
+   "p": 58,
+   "pct": 53.6,
+   "units": 164.5,
+   "roi": 2.2,
+   "by_season": {
+    "2021": 59.6,
+    "2022": 39.8,
+    "2023": 45.1,
+    "2024": 33.5,
+    "2025": -53.0,
+    "2026": 39.4
+   },
+   "losing_seasons": 1,
+   "n_seasons": 6
+  },
+  {
+   "name": "Totals, edge > 5",
+   "line": "closing",
+   "seasons": "2018\u201326",
+   "live": false,
+   "w": 3656,
+   "l": 3382,
+   "p": 48,
+   "pct": 51.9,
+   "units": -58.4,
+   "roi": -0.8,
+   "by_season": {
+    "2018": -8.2,
+    "2019": -31.5,
+    "2020": -23.4,
+    "2021": 21.3,
+    "2022": -2.7,
+    "2023": 12.8,
+    "2024": 14.6,
+    "2025": -11.6,
+    "2026": -29.7
+   },
+   "losing_seasons": 6,
+   "n_seasons": 9
+  },
+  {
+   "name": "Totals, edge > 3 (> 5 first two weeks)",
+   "line": "closing",
+   "seasons": "2018\u201326",
+   "live": false,
+   "w": 8229,
+   "l": 7757,
+   "p": 106,
+   "pct": 51.5,
+   "units": -276.1,
+   "roi": -1.7,
+   "by_season": {
+    "2018": -5.3,
+    "2019": -73.7,
+    "2020": -25.1,
+    "2021": -4.4,
+    "2022": -9.3,
+    "2023": 60.4,
+    "2024": -46.6,
+    "2025": -71.5,
+    "2026": -100.6
+   },
+   "losing_seasons": 8,
+   "n_seasons": 9
+  }
+ ],
+ "breakdown": {
+  "spread_all": {
+   "w": 726,
+   "l": 587,
+   "p": 19,
+   "pct": 55.3,
+   "units": 73.0,
+   "roi": 5.5
+  },
+  "total_all": {
+   "w": 3922,
+   "l": 3401,
+   "p": 58,
+   "pct": 53.6,
+   "units": 164.5,
+   "roi": 2.2
+  },
+  "spread_role": [
+   {
+    "group": "Underdog",
+    "share": 63.2,
+    "w": 459,
+    "l": 372,
+    "p": 11,
+    "pct": 55.2,
+    "units": 45.3,
+    "roi": 5.4
+   },
+   {
+    "group": "Favorite",
+    "share": 36.4,
+    "w": 266,
+    "l": 211,
+    "p": 8,
+    "pct": 55.8,
+    "units": 30.8,
+    "roi": 6.4
+   },
+   {
+    "group": "Pick'em",
+    "share": 0.4,
+    "w": 1,
+    "l": 4,
+    "p": 0,
+    "pct": 20.0,
+    "units": -3.1,
+    "roi": -61.8
+   }
+  ],
+  "spread_size": [
+   {
+    "group": "0\u20134.5",
+    "share": 24.0,
+    "w": 176,
+    "l": 137,
+    "p": 7,
+    "pct": 56.2,
+    "units": 23.0,
+    "roi": 7.2
+   },
+   {
+    "group": "5\u20139.5",
+    "share": 20.6,
+    "w": 152,
+    "l": 118,
+    "p": 5,
+    "pct": 56.3,
+    "units": 20.2,
+    "roi": 7.3
+   },
+   {
+    "group": "10\u201314.5",
+    "share": 17.2,
+    "w": 132,
+    "l": 96,
+    "p": 1,
+    "pct": 57.9,
+    "units": 24.0,
+    "roi": 10.5
+   },
+   {
+    "group": "15\u201319.5",
+    "share": 14.1,
+    "w": 98,
+    "l": 88,
+    "p": 2,
+    "pct": 52.7,
+    "units": 1.1,
+    "roi": 0.6
+   },
+   {
+    "group": "20+",
+    "share": 24.0,
+    "w": 168,
+    "l": 148,
+    "p": 4,
+    "pct": 53.2,
+    "units": 4.7,
+    "roi": 1.5
+   }
+  ],
+  "spread_venue": [
+   {
+    "group": "Home",
+    "share": 44.6,
+    "w": 334,
+    "l": 251,
+    "p": 9,
+    "pct": 57.1,
+    "units": 52.6,
+    "roi": 8.9
+   },
+   {
+    "group": "Away",
+    "share": 41.1,
+    "w": 290,
+    "l": 250,
+    "p": 8,
+    "pct": 53.7,
+    "units": 13.6,
+    "roi": 2.5
+   },
+   {
+    "group": "Neutral",
+    "share": 14.3,
+    "w": 102,
+    "l": 86,
+    "p": 2,
+    "pct": 54.3,
+    "units": 6.7,
+    "roi": 3.5
+   }
+  ],
+  "spread_edge": [
+   {
+    "group": "4\u20135",
+    "share": 48.3,
+    "w": 342,
+    "l": 291,
+    "p": 11,
+    "pct": 54.0,
+    "units": 19.9,
+    "roi": 3.1
+   },
+   {
+    "group": "5\u20137",
+    "share": 38.4,
+    "w": 286,
+    "l": 221,
+    "p": 5,
+    "pct": 56.4,
+    "units": 39.0,
+    "roi": 7.6
+   },
+   {
+    "group": "7+",
+    "share": 13.2,
+    "w": 98,
+    "l": 75,
+    "p": 3,
+    "pct": 56.6,
+    "units": 14.1,
+    "roi": 8.0
+   }
+  ],
+  "total_side": [
+   {
+    "group": "Over",
+    "share": 60.9,
+    "w": 2389,
+    "l": 2071,
+    "p": 36,
+    "pct": 53.6,
+    "units": 100.8,
+    "roi": 2.2
+   },
+   {
+    "group": "Under",
+    "share": 39.1,
+    "w": 1533,
+    "l": 1330,
+    "p": 22,
+    "pct": 53.5,
+    "units": 63.6,
+    "roi": 2.2
+   }
+  ],
+  "total_size": [
+   {
+    "group": "under 135",
+    "share": 16.0,
+    "w": 664,
+    "l": 511,
+    "p": 9,
+    "pct": 56.5,
+    "units": 92.6,
+    "roi": 7.8
+   },
+   {
+    "group": "135\u2013144.5",
+    "share": 36.8,
+    "w": 1427,
+    "l": 1262,
+    "p": 26,
+    "pct": 53.1,
+    "units": 35.3,
+    "roi": 1.3
+   },
+   {
+    "group": "145\u2013154.5",
+    "share": 30.8,
+    "w": 1217,
+    "l": 1041,
+    "p": 17,
+    "pct": 53.9,
+    "units": 65.4,
+    "roi": 2.9
+   },
+   {
+    "group": "155+",
+    "share": 16.4,
+    "w": 614,
+    "l": 587,
+    "p": 6,
+    "pct": 51.1,
+    "units": -28.8,
+    "roi": -2.4
+   }
+  ],
+  "total_edge": [
+   {
+    "group": "3\u20134",
+    "share": 40.5,
+    "w": 1554,
+    "l": 1413,
+    "p": 23,
+    "pct": 52.4,
+    "units": -0.3,
+    "roi": -0.0
+   },
+   {
+    "group": "4\u20135",
+    "share": 24.3,
+    "w": 953,
+    "l": 825,
+    "p": 13,
+    "pct": 53.6,
+    "units": 41.4,
+    "roi": 2.3
+   },
+   {
+    "group": "5\u20137",
+    "share": 24.7,
+    "w": 984,
+    "l": 822,
+    "p": 18,
+    "pct": 54.5,
+    "units": 72.5,
+    "roi": 4.0
+   },
+   {
+    "group": "7+",
+    "share": 10.5,
+    "w": 431,
+    "l": 341,
+    "p": 4,
+    "pct": 55.8,
+    "units": 50.8,
+    "roi": 6.5
+   }
+  ]
+ }
+}
